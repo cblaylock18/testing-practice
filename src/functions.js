@@ -15,4 +15,22 @@ function reverseString(string) {
   return reversedString;
 }
 
-export { capitalize, reverseString };
+const calculator = {
+  add(x, y) {
+    return x + y;
+  },
+
+  sub(x, y) {
+    return x - y;
+  },
+
+  mult(x, y) {
+    return x * y;
+  },
+
+  div(x, y) {
+    return x / y;
+  },
+};
+
+export { capitalize, reverseString, calculator };

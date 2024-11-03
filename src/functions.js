@@ -33,4 +33,82 @@ const calculator = {
   },
 };
 
-export { capitalize, reverseString, calculator };
+function caesarCipher(string, n) {
+  const lowerCaseAlphabet = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
+
+  let newString = "";
+
+  for (let i = 0; i < string.length; i++) {
+    const nextCharacter = string.slice(i, i + 1);
+    const indexOfLetter = lowerCaseAlphabet.indexOf(
+      nextCharacter.toLowerCase(),
+    );
+    if (indexOfLetter === -1) {
+      newString = newString.concat(nextCharacter);
+    } else if (nextCharacter === nextCharacter.toUpperCase()) {
+      newString = newString.concat(
+        lowerCaseAlphabet[(indexOfLetter + n) % 26].toUpperCase(),
+      );
+    } else {
+      newString = newString.concat(lowerCaseAlphabet[(indexOfLetter + n) % 26]);
+    }
+  }
+
+  return newString;
+}
+
+function analyzeArray(array) {
+  const average =
+    array.reduce((accumulator, currentValue) => accumulator + currentValue, 0) /
+    array.length;
+
+  function smallerNumber(x, y) {
+    return x <= y ? x : y;
+  }
+
+  const min = array.reduce((accumulator, currentValue) => {
+    return accumulator <= currentValue ? accumulator : currentValue;
+  }, array[0]);
+
+  const max = array.reduce((accumulator, currentValue) => {
+    return accumulator >= currentValue ? accumulator : currentValue;
+  }, array[0]);
+
+  const length = array.length;
+
+  return {
+    average,
+    min,
+    max,
+    length,
+  };
+}
+
+export { capitalize, reverseString, calculator, caesarCipher, analyzeArray };

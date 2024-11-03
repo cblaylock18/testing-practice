@@ -1,4 +1,4 @@
 import "./style.css";
 
-import { capitalize } from "./functions.js";
-export { capitalize };
+import { capitalize, reverseString } from "./functions.js";
+export { capitalize, reverseString };
